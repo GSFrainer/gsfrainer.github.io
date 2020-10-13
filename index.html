@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="GFrainer">
+
+    <title>GFrainer</title>
+
+
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="./theme/css/theme.css">
+
+    <!-- JS, Popper.js and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+        </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+        </script>
+</head>
+
+<body>
+    <!--Nav Bar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top justify-content-between">
+        <div class="container">
+            <a class="navbar-brand font-weight-bold d-print-none" href="./index.html">GFrainer</a>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item">
+                        <a href='./index.html' class="nav-link btn btn-outline-secondary mx-1  active ">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href='./about.html' class="nav-link btn btn-outline-secondary mx-1 ">
+                            About
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href='./list/posts.html' class="nav-link btn btn-outline-secondary mx-1 ">
+                            Posts & Snippets
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href='./projects.html' class="nav-link btn btn-outline-secondary mx-1 ">
+                            Personal Projects
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container site-container" id="top">
+        <div class="row">
+            <!--Side Card-->
+            <div class="d-none d-lg-block col-lg-4 col-xl-3 side">
+
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+
+                        <p class="card-text d-none d-sm-block">
+                            <a href="/pages/index.html">
+                                <img class="profile-image rounded-circle w-75" src="/pages/theme/img/avatar.jpg" />
+                            </a>
+                        </p>
+
+                        <p class="card-text d-xs-flex d-sm-none">
+                            <a href="/pages/index.html">
+                                <img class="profile-image rounded-circle mr-2" src="/pages/theme/img/avatar.jpg"
+                                    style="width: 15% !important" />
+                            </a>
+                            <strong>Simon Freytag</strong>
+                        </p>
+                        <p class="card-text">
+
+                            <a href="mailto:simon@freytag.org.uk" class="d-flex align-items-center mb-1">
+                                <span class="icon grey mr-3">
+                                    <?xml version="1.0" encoding="iso-8859-1"?>
+                                    <!-- Generator: Adobe Illustrator 18.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+                                    <svg version="1.1" id="Email" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20"
+                                        style="enable-background:new 0 0 20 20;" xml:space="preserve">
+                                        <path d="M14.608,12.172c0,0.84,0.239,1.175,0.864,1.175c1.393,0,2.28-1.775,2.28-4.727c0-4.512-3.288-6.672-7.393-6.672
+	c-4.223,0-8.064,2.832-8.064,8.184c0,5.112,3.36,7.896,8.52,7.896c1.752,0,2.928-0.192,4.727-0.792l0.386,1.607
+	c-1.776,0.577-3.674,0.744-5.137,0.744c-6.768,0-10.393-3.72-10.393-9.456c0-5.784,4.201-9.72,9.985-9.72
+	c6.024,0,9.215,3.6,9.215,8.016c0,3.744-1.175,6.6-4.871,6.6c-1.681,0-2.784-0.672-2.928-2.161
+	c-0.432,1.656-1.584,2.161-3.145,2.161c-2.088,0-3.84-1.609-3.84-4.848c0-3.264,1.537-5.28,4.297-5.28
+	c1.464,0,2.376,0.576,2.782,1.488l0.697-1.272h2.016v7.057H14.608z M11.657,9.004c0-1.319-0.985-1.872-1.801-1.872
+	c-0.888,0-1.871,0.719-1.871,2.832c0,1.68,0.744,2.616,1.871,2.616c0.792,0,1.801-0.504,1.801-1.896V9.004z" />
+                                    </svg>
+
+                                </span>
+                                Email me
+                            </a>
+
+                            <a href="https://github.com/sfreytag" class="d-flex align-items-center mb-1">
+                                <span class="icon grey mr-3">
+                                    <?xml version="1.0" encoding="utf-8"?>
+                                    <!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+                                    <svg version="1.1" id="Github" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20"
+                                        enable-background="new 0 0 20 20" xml:space="preserve">
+                                        <path d="M13.18,11.309c-0.718,0-1.3,0.807-1.3,1.799c0,0.994,0.582,1.801,1.3,1.801s1.3-0.807,1.3-1.801
+	C14.479,12.116,13.898,11.309,13.18,11.309z M17.706,6.626c0.149-0.365,0.155-2.439-0.635-4.426c0,0-1.811,0.199-4.551,2.08
+	c-0.575-0.16-1.548-0.238-2.519-0.238c-0.973,0-1.945,0.078-2.52,0.238C4.74,2.399,2.929,2.2,2.929,2.2
+	C2.14,4.187,2.148,6.261,2.295,6.626C1.367,7.634,0.8,8.845,0.8,10.497c0,7.186,5.963,7.301,7.467,7.301
+	c0.342,0,1.018,0.002,1.734,0.002c0.715,0,1.392-0.002,1.732-0.002c1.506,0,7.467-0.115,7.467-7.301
+	C19.2,8.845,18.634,7.634,17.706,6.626z M10.028,16.915H9.972c-3.771,0-6.709-0.449-6.709-4.115c0-0.879,0.31-1.693,1.047-2.369
+	c1.227-1.127,3.305-0.531,5.662-0.531c0.01,0,0.02,0,0.029,0c0.01,0,0.018,0,0.027,0c2.357,0,4.436-0.596,5.664,0.531
+	c0.735,0.676,1.045,1.49,1.045,2.369C16.737,16.466,13.8,16.915,10.028,16.915z M6.821,11.309c-0.718,0-1.3,0.807-1.3,1.799
+	c0,0.994,0.582,1.801,1.3,1.801c0.719,0,1.301-0.807,1.301-1.801C8.122,12.116,7.54,11.309,6.821,11.309z" />
+                                    </svg>
+
+                                </span>
+                                GitHub
+                            </a>
+
+                            <a href="https://stackoverflow.com/users/3861550/sifriday"
+                                class="d-flex align-items-center mb-1">
+                                <span class="icon grey mr-3">
+
+                                    <?xml version="1.0" encoding="utf-8"?>
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120"
+                                        style="enable-background:new 0 0 120 120;" xml:space="preserve">
+                                        <style type="text/css">
+                                            .st0 {
+                                                fill: #BCBBBB;
+                                            }
+
+                                            .st1 {
+                                                fill: #F48023;
+                                            }
+                                        </style>
+                                        <polygon class="st0"
+                                            points="84.4,93.8 84.4,70.6 92.1,70.6 92.1,101.5 22.6,101.5 22.6,70.6 30.3,70.6 30.3,93.8 " />
+                                        <path class="st1" d="M38.8,68.4l37.8,7.9l1.6-7.6l-37.8-7.9L38.8,68.4z M43.8,50.4l35,16.3l3.2-7l-35-16.4L43.8,50.4z M53.5,33.2
+	l29.7,24.7l4.9-5.9L58.4,27.3L53.5,33.2z M72.7,14.9l-6.2,4.6l23,31l6.2-4.6L72.7,14.9z M38,86h38.6v-7.7H38V86z" />
+                                    </svg>
+
+                                </span>
+                                Stack Overflow
+                            </a>
+
+                            <a href="http://photos.freytag.org.uk" class="d-flex align-items-center mb-1">
+                                <span class="icon grey mr-3">
+                                    <?xml version="1.0" encoding="utf-8"?>
+                                    <!-- Generator: Adobe Illustrator 18.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+                                    <svg version="1.1" id="Camera" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20"
+                                        enable-background="new 0 0 20 20" xml:space="preserve">
+                                        <path d="M10,8c-1.657,0-3,1.344-3,3c0,1.656,1.343,3,3,3c1.656,0,3-1.344,3-3C13,9.344,11.656,8,10,8z M18,5h-2.4
+	c-0.33,0-0.686-0.256-0.789-0.57l-0.621-1.861C14.085,2.256,13.731,2,13.4,2H6.6C6.27,2,5.914,2.256,5.811,2.568L5.189,4.43
+	C5.085,4.744,4.73,5,4.4,5H2C0.9,5,0,5.9,0,7v9c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V7C20,5.9,19.1,5,18,5z M10,16
+	c-2.762,0-5-2.238-5-5c0-2.762,2.238-5,5-5c2.761,0,5,2.238,5,5C15,13.762,12.761,16,10,16z M17.5,8.2c-0.387,0-0.7-0.314-0.7-0.701
+	c0-0.385,0.313-0.7,0.7-0.7s0.7,0.314,0.7,0.7C18.2,7.886,17.887,8.2,17.5,8.2z" />
+                                    </svg>
+
+                                </span>
+                                Photos
+                            </a>
+
+                            <a href="https://500px.com/sifriday" class="d-flex align-items-center mb-1">
+                                <span class="icon grey mr-3">
+                                    <?xml version="1.0" encoding="utf-8"?>
+                                    <!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+                                    <svg version="1.1" id="_x35_00px" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20"
+                                        enable-background="new 0 0 20 20" xml:space="preserve">
+                                        <path d="M6.398,14.775c0.481-0.174,0.928-0.4,1.337-0.683c0.41-0.282,0.797-0.608,1.16-0.982c0.363-0.373,0.736-0.759,1.118-1.159
+	c0.346,0.4,0.71,0.786,1.092,1.159c0.382,0.374,0.787,0.7,1.214,0.982c0.428,0.282,0.887,0.509,1.379,0.683
+	c0.49,0.173,1.017,0.259,1.582,0.259c0.727,0,1.387-0.132,1.977-0.396c0.591-0.264,1.087-0.627,1.487-1.092
+	c0.399-0.464,0.71-1.005,0.928-1.623C19.891,11.306,20,10.642,20,9.932c0-0.71-0.109-1.364-0.328-1.964
+	c-0.218-0.602-0.528-1.123-0.928-1.569c-0.4-0.446-0.892-0.795-1.473-1.05c-0.583-0.256-1.238-0.383-1.966-0.383
+	c-0.581,0-1.123,0.092-1.623,0.273c-0.5,0.182-0.964,0.423-1.391,0.723c-0.428,0.3-0.828,0.65-1.201,1.051
+	c-0.372,0.399-0.732,0.81-1.078,1.228C9.648,7.804,9.28,7.391,8.908,6.999C8.535,6.608,8.135,6.262,7.707,5.962
+	c-0.428-0.3-0.891-0.541-1.391-0.723c-0.5-0.182-1.051-0.273-1.65-0.273c-0.728,0-1.385,0.133-1.965,0.396
+	C2.117,5.626,1.628,5.979,1.227,6.426c-0.4,0.446-0.706,0.974-0.914,1.583C0.104,8.618,0,9.277,0,9.985
+	c0,0.71,0.108,1.374,0.326,1.992c0.219,0.619,0.537,1.15,0.955,1.597c0.419,0.446,0.919,0.801,1.5,1.064
+	c0.584,0.264,1.246,0.396,1.993,0.396C5.374,15.034,5.916,14.948,6.398,14.775z M3.164,11.65c-0.383-0.418-0.573-0.955-0.573-1.609
+	c0-0.6,0.186-1.142,0.561-1.624c0.372-0.48,0.876-0.723,1.515-0.723c0.345,0,0.689,0.078,1.035,0.232
+	c0.346,0.154,0.678,0.35,0.997,0.587C7.016,8.75,7.321,9.009,7.611,9.29c0.291,0.283,0.546,0.542,0.765,0.778
+	c-0.219,0.255-0.464,0.515-0.737,0.776c-0.273,0.266-0.562,0.502-0.872,0.71c-0.311,0.21-0.637,0.382-0.983,0.519
+	c-0.345,0.137-0.691,0.205-1.036,0.205C4.073,12.278,3.546,12.069,3.164,11.65z M14.256,12.088c-0.336-0.127-0.66-0.296-0.968-0.505
+	c-0.311-0.209-0.603-0.445-0.874-0.709c-0.273-0.264-0.528-0.532-0.764-0.806c0.218-0.236,0.463-0.495,0.736-0.778
+	c0.273-0.281,0.56-0.54,0.859-0.776c0.3-0.237,0.619-0.433,0.955-0.587c0.337-0.154,0.688-0.232,1.051-0.232
+	c0.673,0,1.204,0.227,1.596,0.683c0.392,0.454,0.587,1,0.587,1.638c0,0.637-0.183,1.172-0.546,1.608
+	c-0.364,0.438-0.882,0.655-1.555,0.655C14.952,12.278,14.592,12.215,14.256,12.088z" />
+                                    </svg>
+
+                                </span>
+                                500px
+                            </a>
+
+                            <a href="https://www.google.co.uk/maps/place/New+Mills,+High+Peak/@53.3680466,-2.0150198,15z/data=!3m1!4b1!4m5!3m4!1s0x487bcad34bb6b70d:0xe0040aa26332643e!8m2!3d53.3678916!4d-2.0047714"
+                                class="d-flex align-items-center mb-1">
+                                <span class="icon grey mr-3">
+                                    <?xml version="1.0" encoding="iso-8859-1"?>
+                                    <!-- Generator: Adobe Illustrator 18.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+                                    <svg version="1.1" id="Location_pin" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20"
+                                        style="enable-background:new 0 0 20 20;" xml:space="preserve">
+                                        <path d="M10,2.009c-2.762,0-5,2.229-5,4.99c0,4.774,5,11,5,11s5-6.227,5-11C15,4.239,12.762,2.009,10,2.009z M10,9.76
+	c-1.492,0-2.7-1.209-2.7-2.7s1.208-2.7,2.7-2.7c1.49,0,2.699,1.209,2.699,2.7S11.49,9.76,10,9.76z" />
+                                    </svg>
+
+                                </span>
+                                New Mills
+                            </a>
+
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!--Content-->
+            <div class="col-md-12 col-lg-8 col-xl-9 pb-4 content">
+                <!--About-->
+                <!--How am I? What do I love? What do I do?-->
+                <h2 class="border border-top-0 border-right-0 border-left-0 mb-4 pb-2">
+
+                    What I do
+
+                </h2>
+
+                <p>I’m a versatile web developer, with particular skill in JavaScript, and a knack for getting up to
+                    speed quickly on projects.</p>
+
+                <p><a href="/pages/about.html">More about me.</a></p>
+
+                <!--Description-->
+                <!--What is it about? What am I sharing?-->
+                <h2 class="border border-top-0 border-right-0 border-left-0 mb-4 pb-2">
+                    How I can help
+                </h2>
+
+                <p>Have you got a deadline you need a bit of help to meet? A backlog that needs clearing? Or a prototype
+                    you need building quickly?</p>
+
+                <p>I specialise in short-term and flexible work to help you do any of these things.</p>
+
+                <p><a href="mailto:simon@freytag.org.uk">Contact me about any project work.</a></p>
+
+                <!--External Activities-->
+                <h2 class="border border-top-0 border-right-0 border-left-0 mb-4 pb-2">
+                    What I've done recently
+                </h2>
+                <!--Activity Template-->
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <h5 class="card-title">Vue, OpenLayers, Go and PostGIS</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Spring and Summer 2020</h6>
+                        <p class="card-text">
+                            Helped a company complete their new GIS product, presenting detailed GIS data in a friendly
+                            web interface for organisations in the outdoor leisure industry.
+                        </p>
+                    </div>
+                </div>
+
+                <!--Posts-->
+                <h2 class="border border-top-0 border-right-0 border-left-0 mb-4 pb-2">
+                    Recent posts
+                </h2>
+
+                <!--Post Template-->
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <div class="card card-post w-100 border-0">
+                            <div class="card-body p-0">
+                                <h4 class="card-title mb-4">
+                                    <a href="/pages/2020/05/15/geodesy-search-engine.html">Geodesy Search Engine</a>
+                                </h4>
+                                <h6 class="card-subtitle mb-3 text-secondary">
+                                    15 May 2020
+                                </h6>
+                                <div class="card-text d-flex align-items-center mb-2">
+                                    <div>
+                                        <span class="d-inline-block border rounded p-1 mr-1 mb-1 tag tag-vuejs">
+                                            vuejs
+                                        </span>
+
+                                        <span class="d-inline-block border rounded p-1 mr-1 mb-1 tag tag-python">
+                                            python
+                                        </span>
+
+                                        <span class="d-inline-block border rounded p-1 mr-1 mb-1 tag tag-maps">
+                                            maps
+                                        </span>
+
+                                        <span class="d-inline-block border rounded p-1 mr-1 mb-1 tag tag-openlayers">
+                                            openlayers
+                                        </span>
+
+                                        <span
+                                            class="d-inline-block border rounded p-1 mr-1 mb-1 tag tag-google-app-engine">
+                                            google app engine
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card-text mb-0">
+                                    <p>I’ve built a new hobby project. Geodesy is a quick spatial search engine for the
+                                        EPSG Geodetic Parameter Registry - <a
+                                            href="https://geodesy.appspot.com">https://geodesy.appspot.com</a>.</p>
+                                </div>
+                                <a href="/pages/2020/05/15/geodesy-search-engine.html">More...</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
