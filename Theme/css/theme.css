@@ -7,11 +7,12 @@
 }
 
 .icon {
-    height: 21px;
-    width: 21px;
+    height : 21px;
+    width  : 21px;
     display: flex;
+
     svg {
-        width: 21px;
+        width : 21px;
         height: 21px;
     }
 }
@@ -26,7 +27,7 @@
 
 .list-title {
     text-transform: uppercase;
-    font-weight: 300;
+    font-weight   : 300;
 }
 
 .navbar-toggler:focus {
@@ -34,7 +35,7 @@
 }
 
 .navbar-toggler {
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .navbar-toggler.collapsed {
@@ -42,27 +43,59 @@
 }
 
 h2[id]::before {
-    display: block;
-    height: 80px;
+    display   : block;
+    height    : 80px;
     margin-top: -80px;
     visibility: hidden;
-    content: "";
+    content   : "";
 }
 
 .sticky-top.space-before {
     padding-top: 80px;
-    margin-top: -80px;
+    margin-top : -80px;
 }
 
 @media print {
     body {
         -webkit-print-color-adjust: exact !important;
     }
+
     .jumbotron {
         padding: 0;
     }
+
     .badge {
         border: 0 !important;
     }
 }
 
+.loader {
+    border           : 5px solid #f3f3f3;
+    border-radius    : 0%;
+    border-top       : 5px solid blue;
+    border-bottom    : 5px solid green;
+    width            : 50px;
+    height           : 50px;
+    -webkit-animation: spin 2s linear infinite;
+    animation        : spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
