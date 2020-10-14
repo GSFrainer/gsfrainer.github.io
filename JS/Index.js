@@ -11,6 +11,7 @@ var postTemplate = `<div class="card mb-2">
             </h6>
             <div class="card-text d-flex align-items-center mb-2">
                 <div>
+                    {tags}
                     {languages}
                 </div>
             </div>
@@ -33,17 +34,19 @@ fetch(new Request("https://api.github.com/users/GFrainer/repos"))
     })
     .then(response => {
         let posts = new Array((response.length > 3 ? 3 : response.length));
-        let promises = new Array(posts.length);
+        let promises = new Array(posts.length*2);
 
         for (let i = 0; i < posts.length; i++) {
             posts[i] = {
                 name: response[i].name,
                 updated_at: response[i].updated_at,
                 description: response[i].description,
+                tags: "",
                 languages: "",
                 link: response[i].html_url
             };
             promises[i] = getLanguages(response[i].languages_url, posts[i]);
+            promises[promises.length+i] = getInternalTags("https://raw.githubusercontent.com/"+response[i].full_name+"/"+response[i].default_branch + "/InternalTags.json", posts[i]);
         }
 
         Promise.all(promises).then(results => {
@@ -54,25 +57,38 @@ fetch(new Request("https://api.github.com/users/GFrainer/repos"))
                 post = post.replace("{name}", p.name);
                 post = post.replace("{updatedAt}", (new Date(p.updated_at)).toLocaleDateString("en-GB", { year: 'numeric', month: 'long', day: 'numeric' }));
                 post = post.replace("{description}", p.description);
+                post = post.replace("{tags}", p.tags);
                 post = post.replace("{languages}", p.languages);
                 post = post.replaceAll("{link}", p.link);
                 document.getElementById("posts").innerHTML += post;
             });
         });
-
-
-
     }).catch(error => {
         console.error(error);
     });
 
+function getInternalTags(tagsURL, p) {
+    fetch(new Request(tagsURL)).then(result => {
+        if (result.status === 200) {
+            return result.json();
+        }
+        throw new Error("404");
+    }).then(r => {
+        r.Tags.forEach(tag=>{
+            p.tags += languagesTemplate.replace("{tag}", tag);
+        });
+    }).catch(e=>console.log("No Tags"));
+}
 
 function getLanguages(languagesURL, p) {
     return fetch(new Request(languagesURL)).then(result => {
-        return result.json();
+        if (result.status === 200) {
+            return result.json();
+        }
+        throw new Error("404");
     }).then(r => {
         for (let l in r) {
             p.languages += languagesTemplate.replace("{tag}", l);
         }
-    });
+    }).catch(e=>console.log("No Languages"));
 }
