@@ -4,7 +4,7 @@ import json
 class Index:
     
     def createIndex(self, dataDict, pages):
-        navItem = """<li class="nav-item"><a class="nav-link btn btn-outline-secondary mx-1" id="pills-${navItem}-tab" data-toggle="pill" href="#${navItem}" role="tab" aria-controls="${navItem}" aria-selected="true">${tabName}</a> </li>"""
+        navItem = """<li class="nav-item"><a class="nav-link mx-1" id="pills-${navItem}-tab" data-toggle="pill" href="#${navItem}" role="tab" aria-controls="${navItem}" aria-selected="true">${tabName}</a> </li>"""
         navTab = """<div class="tab-pane fade" id="${navItem}" role="tabpanel" aria-labelledby="pills-${navItem}-tab">
                         ${tabContent}
                     </div>"""
