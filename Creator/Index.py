@@ -1,22 +1,20 @@
 from string import Template
 import json
+import Utils.Templates as Templates
 
 class Index:
     
     def createIndex(self, dataDict, pages):
-        navItem = """<li class="nav-item"><a class="nav-link mx-1" id="pills-${navItem}-tab" data-toggle="pill" href="#${navItem}" role="tab" aria-controls="${navItem}" aria-selected="true">${tabName}</a> </li>"""
-        navTab = """<div class="tab-pane fade" id="${navItem}" role="tabpanel" aria-labelledby="pills-${navItem}-tab">
-                        ${tabContent}
-                    </div>"""
+        templates = Templates.getTemplates("Index")        
         scripts = ""
         navItems = ""
         navTabs = ""
         for name, page in pages.items():
-            navItems += (Template(navItem)).safe_substitute({"navItem":name, "tabName":name})
-            tab = navTab.replace("${navItem}", name)
-            navTabs += tab.replace("${tabContent}", page['content'])
+            navItems += (Template(templates['NavItemTemplate'])).safe_substitute({"NavItem":name, "TabName":name})
+            tab = templates["NavTabTemplate"].replace("${NavItem}", name)
+            navTabs += tab.replace("${TabContent}", page['content'])
             if "script" in page:
-                scripts += '<script src="./JS/'+page["script"]+'"></script>'
+                scripts += templates["ScriptTemplate"].replace("${Script}",page["script"])
         
         with open("../Pages/Index.html", 'r') as file:
             result = file.read()
