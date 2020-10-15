@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="GFrainer">
+    <meta name="author" content="${name}">
 
-    <title>GFrainer</title>
+    <title>${title}</title>
 
 
     <!-- CSS only -->
@@ -25,7 +25,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
         </script>
-    <script src="./JS/Home.js"></script>
+    ${Scripts}
 </head>
 
 <body>
@@ -38,7 +38,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="nav navbar-nav nav-pills ml-auto" id="pills-tab" role="tablist">
-                    <li class="nav-item"><a class="nav-link btn btn-outline-secondary mx-1" id="pills-Home-tab" data-toggle="pill" href="#Home" role="tab" aria-controls="Home" aria-selected="true">Home</a> </li><li class="nav-item"><a class="nav-link btn btn-outline-secondary mx-1" id="pills-Activities-tab" data-toggle="pill" href="#Activities" role="tab" aria-controls="Activities" aria-selected="true">Activities</a> </li><li class="nav-item"><a class="nav-link btn btn-outline-secondary mx-1" id="pills-About-tab" data-toggle="pill" href="#About" role="tab" aria-controls="About" aria-selected="true">About</a> </li>
+                    ${navItems}
                 </ul>
             </div>
         </div>
@@ -53,12 +53,12 @@
                     <div class="card-body text-center">
 
                         <p class="card-text d-none d-sm-block">
-                            <img class="profile-image rounded-circle w-75" src="https://avatars2.githubusercontent.com/u/58173403?v=4" />
+                            <img class="profile-image rounded-circle w-75" src="${avatar}" />
                         </p>
 
                         <p class="card-text">
 
-                            <a href="mailto:gs.frainer@gmail.com" class="d-flex align-items-center mb-1" target="_blank">
+                            <a href="mailto:${email}" class="d-flex align-items-center mb-1" target="_blank">
                                 <span class="icon grey mr-3">
                                     <!-- Generator: Adobe Illustrator 18.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 
@@ -78,7 +78,7 @@
                                 E-mail me
                             </a>
 
-                            <a href="https://github.com/GFrainer" class="d-flex align-items-center mb-1" target="_blank">
+                            <a href="https://github.com/${github}" class="d-flex align-items-center mb-1" target="_blank">
                                 <span class="icon grey mr-3">
                                     <!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 
@@ -126,85 +126,7 @@
             <!--Content-->
             <div class="col-md-12 col-lg-8 col-xl-9 pb-4 content">
                 <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade" id="Home" role="tabpanel" aria-labelledby="pills-Home-tab">
-                        <div class="col-md-12 col-lg-8 col-xl-9 pb-4 content">
-    <!--About-->
-    <!--How am I? What do I love? What do I do?-->
-    <h2 class="border border-top-0 border-right-0 border-left-0 mb-2 pb-2">
-
-        What I do
-
-    </h2>
-
-    <p>I’m a versatile web developer, with particular skill in JavaScript, and a knack for getting up to
-        speed quickly on projects.</p>
-
-    <p><a href="#About.html">More about me.</a></p>
-
-    <!--Description-->
-    <!--What is it about? What am I sharing?-->
-    <h2 class="border border-top-0 border-right-0 border-left-0 mb-2 pb-2">
-        How I can help
-    </h2>
-
-    <p>Have you got a deadline you need a bit of help to meet? A backlog that needs clearing? Or a prototype
-        you need building quickly?</p>
-
-    <p>I specialise in short-term and flexible work to help you do any of these things.</p>
-
-    <p><a href="mailto:gs.frainer@gmail.com">Contact me about any project work.</a></p>
-
-    <!--External Activities-->
-    <h2 class="border border-top-0 border-right-0 border-left-0 mb-2 pb-2 mt-4">
-        What I've done recently
-    </h2>
-    <!--Activities Content-->
-    ${ActivitiesContent}
-
-    <!--Posts-->
-    <h2 class="border border-top-0 border-right-0 border-left-0 mb-2 pb-2 mt-4">
-        Recent posts
-    </h2>
-
-    <!--Posts Content-->
-    <div id="posts">
-        <div class="loader" style="margin: auto;"></div>
-    </div>
-
-</div>
-                    </div><div class="tab-pane fade" id="Activities" role="tabpanel" aria-labelledby="pills-Activities-tab">
-                        <div class="col-md-12 col-lg-8 col-xl-9 pb-4 content">
-    <!--Description-->
-    <!--What is it about? What am I sharing?-->
-    <h2 class="border border-top-0 border-right-0 border-left-0 mb-2 pb-2">
-        How I can help
-    </h2>
-
-    <p>Have you got a deadline you need a bit of help to meet? A backlog that needs clearing? Or a prototype
-        you need building quickly?</p>
-
-    <p>I specialise in short-term and flexible work to help you do any of these things.</p>
-
-    <p><a href="mailto:gs.frainer@gmail.com">Contact me about any project work.</a></p>
-
-
-</div>
-                    </div><div class="tab-pane fade" id="About" role="tabpanel" aria-labelledby="pills-About-tab">
-                        <div class="col-md-12 col-lg-8 col-xl-9 pb-4 content">
-    <!--About-->
-    <!--How am I? What do I love? What do I do?-->
-    <h2 class="border border-top-0 border-right-0 border-left-0 mb-2 pb-2">
-
-        What I do
-
-    </h2>
-
-    <p>I’m a versatile web developer, with particular skill in JavaScript, and a knack for getting up to
-        speed quickly on projects.</p>
-
-    <p><a href="#About.html">More about me.</a></p>  
-</div>
-                    </div>
+                    ${navTabs}
                 </div>
             </div>
         </div>
@@ -215,7 +137,7 @@
 
 <script>
     //Load first page
-    var name = "GFrainer"
+    var name = "${name}"
     hashChange();
     window.onhashchange = hashChange;
 
