@@ -1,11 +1,11 @@
 from string import Template
 import json
 
-class Activities:
+class About:
     
-    def createActivities(self, dataDict):
+    def createAbout(self, dataDict):
         ret = dict()
-        with open('../Pages/Activities.html', 'r') as file:
+        with open('../Pages/About.html', 'r') as file:
             content = file.read()
             ret["content"] = (Template(content)).safe_substitute(dataDict)
         return ret

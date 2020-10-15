@@ -1,11 +1,12 @@
 from string import Template
 import json
 
-class Activities:
+class Home:
     
-    def createActivities(self, dataDict):
+    def createHome(self, dataDict):
         ret = dict()
-        with open('../Pages/Activities.html', 'r') as file:
+        with open('../Pages/Home.html', 'r') as file:
             content = file.read()
             ret["content"] = (Template(content)).safe_substitute(dataDict)
+            ret['script'] = "Home.js"
         return ret
