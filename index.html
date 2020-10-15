@@ -25,6 +25,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
         </script>
+    <script src="./JS/Home.js"></script>
 </head>
 
 <body>
@@ -36,36 +37,12 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav ml-auto">
-
-                    <li class="nav-item">
-                        <a href='./index.html' class="nav-link btn btn-outline-secondary mx-1  active ">
-                            Home
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href='./Pages/About.html' class="nav-link btn btn-outline-secondary mx-1 ">
-                            About
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href='./Pages/Activities.html' class="nav-link btn btn-outline-secondary mx-1 ">
-                            Activities
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href='./Pages/Projects.html' class="nav-link btn btn-outline-secondary mx-1 ">
-                            Projects
-                        </a>
-                    </li>
+                <ul class="nav navbar-nav nav-pills ml-auto" id="pills-tab" role="tablist">
+                    <li class="nav-item"><a class="nav-link btn btn-outline-secondary mx-1" id="pills-Home-tab" data-toggle="pill" href="#Home" role="tab" aria-controls="Home" aria-selected="true">Home</a> </li><li class="nav-item"><a class="nav-link btn btn-outline-secondary mx-1" id="pills-Activities-tab" data-toggle="pill" href="#Activities" role="tab" aria-controls="Activities" aria-selected="true">Activities</a> </li><li class="nav-item"><a class="nav-link btn btn-outline-secondary mx-1" id="pills-About-tab" data-toggle="pill" href="#About" role="tab" aria-controls="About" aria-selected="true">About</a> </li>
                 </ul>
             </div>
         </div>
     </nav>
-
 
     <div class="container site-container" id="top">
         <div class="row">
@@ -76,18 +53,9 @@
                     <div class="card-body text-center">
 
                         <p class="card-text d-none d-sm-block">
-                            <a href="./Pages/About.html">
-                                <img class="profile-image rounded-circle w-75" src="/pages/theme/img/avatar.jpg" />
-                            </a>
+                            <img class="profile-image rounded-circle w-75" src="https://avatars2.githubusercontent.com/u/58173403?v=4" />
                         </p>
 
-                        <p class="card-text d-xs-flex d-sm-none">
-                            <a href="./Pages/About.htmls">
-                                <img class="profile-image rounded-circle mr-2" src="/pages/theme/img/avatar.jpg"
-                                    style="width: 15% !important" />
-                            </a>
-                            <strong>GFrainer</strong>
-                        </p>
                         <p class="card-text">
 
                             <a href="mailto:gs.frainer@gmail.com" class="d-flex align-items-center mb-1" target="_blank">
@@ -157,105 +125,127 @@
 
             <!--Content-->
             <div class="col-md-12 col-lg-8 col-xl-9 pb-4 content">
-                <!--About-->
-                <!--How am I? What do I love? What do I do?-->
-                <h2 class="border border-top-0 border-right-0 border-left-0 mb-4 pb-2">
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade" id="Home" role="tabpanel" aria-labelledby="pills-Home-tab">
+                        <div class="col-md-12 col-lg-8 col-xl-9 pb-4 content">
+    <!--About-->
+    <!--How am I? What do I love? What do I do?-->
+    <h2 class="border border-top-0 border-right-0 border-left-0 mb-2 pb-2">
 
-                    What I do
+        What I do
 
-                </h2>
+    </h2>
 
-                <p>I’m a versatile web developer, with particular skill in JavaScript, and a knack for getting up to
-                    speed quickly on projects.</p>
+    <p>I’m a versatile web developer, with particular skill in JavaScript, and a knack for getting up to
+        speed quickly on projects.</p>
 
-                <p><a href="./Pages/About.html">More about me.</a></p>
+    <p><a href="#About.html">More about me.</a></p>
 
-                <!--Description-->
-                <!--What is it about? What am I sharing?-->
-                <h2 class="border border-top-0 border-right-0 border-left-0 mb-4 pb-2">
-                    How I can help
-                </h2>
+    <!--Description-->
+    <!--What is it about? What am I sharing?-->
+    <h2 class="border border-top-0 border-right-0 border-left-0 mb-2 pb-2">
+        How I can help
+    </h2>
 
-                <p>Have you got a deadline you need a bit of help to meet? A backlog that needs clearing? Or a prototype
-                    you need building quickly?</p>
+    <p>Have you got a deadline you need a bit of help to meet? A backlog that needs clearing? Or a prototype
+        you need building quickly?</p>
 
-                <p>I specialise in short-term and flexible work to help you do any of these things.</p>
+    <p>I specialise in short-term and flexible work to help you do any of these things.</p>
 
-                <p><a href="mailto:simon@freytag.org.uk">Contact me about any project work.</a></p>
+    <p><a href="mailto:gs.frainer@gmail.com">Contact me about any project work.</a></p>
 
-                <!--External Activities-->
-                <h2 class="border border-top-0 border-right-0 border-left-0 mb-4 pb-2">
-                    What I've done recently
-                </h2>
-                <!--Activity Template-->
-                <div class="card mb-2">
-                    <div class="card-body">
-                        <h5 class="card-title">Vue, OpenLayers, Go and PostGIS</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Spring and Summer 2020</h6>
-                        <p class="card-text">
-                            Helped a company complete their new GIS product, presenting detailed GIS data in a friendly
-                            web interface for organisations in the outdoor leisure industry.
-                        </p>
-                    </div>
-                </div>
+    <!--External Activities-->
+    <h2 class="border border-top-0 border-right-0 border-left-0 mb-2 pb-2 mt-4">
+        What I've done recently
+    </h2>
+    <!--Activities Content-->
+    ${ActivitiesContent}
 
-                <!--Posts-->
-                <h2 class="border border-top-0 border-right-0 border-left-0 mb-4 pb-2">
-                    Recent posts
-                </h2>
+    <!--Posts-->
+    <h2 class="border border-top-0 border-right-0 border-left-0 mb-2 pb-2 mt-4">
+        Recent posts
+    </h2>
 
-                <!--Post Template-->
-                <div class="card mb-2">
-                    <div class="card-body">
-                        <div class="card card-post w-100 border-0">
-                            <div class="card-body p-0">
-                                <h4 class="card-title mb-4">
-                                    <a href="/pages/2020/05/15/geodesy-search-engine.html">Geodesy Search Engine</a>
-                                </h4>
-                                <h6 class="card-subtitle mb-3 text-secondary">
-                                    15 May 2020
-                                </h6>
-                                <div class="card-text d-flex align-items-center mb-2">
-                                    <div>
-                                        <span class="d-inline-block border rounded p-1 mr-1 mb-1 tag tag-vuejs">
-                                            vuejs
-                                        </span>
-
-                                        <span class="d-inline-block border rounded p-1 mr-1 mb-1 tag tag-python">
-                                            python
-                                        </span>
-
-                                        <span class="d-inline-block border rounded p-1 mr-1 mb-1 tag tag-maps">
-                                            maps
-                                        </span>
-
-                                        <span class="d-inline-block border rounded p-1 mr-1 mb-1 tag tag-openlayers">
-                                            openlayers
-                                        </span>
-
-                                        <span
-                                            class="d-inline-block border rounded p-1 mr-1 mb-1 tag tag-google-app-engine">
-                                            google app engine
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="card-text mb-0">
-                                    <p>I’ve built a new hobby project. Geodesy is a quick spatial search engine for the
-                                        EPSG Geodetic Parameter Registry - <a
-                                            href="https://geodesy.appspot.com">https://geodesy.appspot.com</a>.</p>
-                                </div>
-                                <a href="/pages/2020/05/15/geodesy-search-engine.html">More...</a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
+    <!--Posts Content-->
+    <div id="posts">
+        <div class="loader" style="margin: auto;"></div>
     </div>
 
+</div>
+                    </div><div class="tab-pane fade" id="Activities" role="tabpanel" aria-labelledby="pills-Activities-tab">
+                        <div class="col-md-12 col-lg-8 col-xl-9 pb-4 content">
+    <!--Description-->
+    <!--What is it about? What am I sharing?-->
+    <h2 class="border border-top-0 border-right-0 border-left-0 mb-2 pb-2">
+        How I can help
+    </h2>
+
+    <p>Have you got a deadline you need a bit of help to meet? A backlog that needs clearing? Or a prototype
+        you need building quickly?</p>
+
+    <p>I specialise in short-term and flexible work to help you do any of these things.</p>
+
+    <p><a href="mailto:gs.frainer@gmail.com">Contact me about any project work.</a></p>
+
+
+</div>
+                    </div><div class="tab-pane fade" id="About" role="tabpanel" aria-labelledby="pills-About-tab">
+                        <div class="col-md-12 col-lg-8 col-xl-9 pb-4 content">
+    <!--About-->
+    <!--How am I? What do I love? What do I do?-->
+    <h2 class="border border-top-0 border-right-0 border-left-0 mb-2 pb-2">
+
+        What I do
+
+    </h2>
+
+    <p>I’m a versatile web developer, with particular skill in JavaScript, and a knack for getting up to
+        speed quickly on projects.</p>
+
+    <p><a href="#About.html">More about me.</a></p>  
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
+
+<script>
+    //Load first page
+    var name = "GFrainer"
+    hashChange();
+    window.onhashchange = hashChange;
+
+    //Function to update url
+    function hashChange() {
+        if (window.location.hash != "") {
+            $('#pills-tab a[href="' + window.location.hash + '"]').tab('show');
+        } else {
+            $('#pills-tab a[href="#Home"]').tab('show');
+        }
+        window.scrollTo(0, 0);
+    }
+
+    //Navigate tabs
+    $('a[data-toggle="pill"]').on('shown.bs.tab', function (e) {
+        let title = e.currentTarget.hash.substring(1);
+        if (title != "Home") {
+            document.title = name + " - " + title;
+        } else {
+            document.title = name;
+        }
+        window.location.hash = e.currentTarget.hash;
+        window.scrollTo(0, 0);
+    })
+
+    /*
+        fetch(new Request("./Home.html")).then(result => {
+            return result.arrayBuffer();
+        }).then(result => {
+            document.getElementById("Home").innerHTML = new TextDecoder("utf-8").decode(result);
+        });
+    */
+</script>
