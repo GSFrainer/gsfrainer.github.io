@@ -51,7 +51,7 @@ fetch(new Request("https://api.github.com/users/GFrainer/repos"))
 
         Promise.all(promises).then(results => {
             let post;
-            document.getElementById("posts").innerHTML = "";
+            document.getElementById("homePosts").innerHTML = "";
             posts.forEach(p => {
                 post = postTemplate;
                 post = post.replace("{name}", p.name);
@@ -60,7 +60,7 @@ fetch(new Request("https://api.github.com/users/GFrainer/repos"))
                 post = post.replace("{tags}", p.tags);
                 post = post.replace("{languages}", p.languages);
                 post = post.replaceAll("{link}", p.link);
-                document.getElementById("posts").innerHTML += post;
+                document.getElementById("homePosts").innerHTML += post;
             });
         });
     }).catch(error => {
