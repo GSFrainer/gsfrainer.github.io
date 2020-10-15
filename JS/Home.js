@@ -1,29 +1,29 @@
 //Templates
 var postTemplate = `<div class="card mb-2">
-<div class="card-body">
-    <div class="card card-post w-100 border-0">
-        <div class="card-body p-0">
-            <h4 class="card-title mb-4">
-                <a href="{link}">{name}</a>
-            </h4>
-            <h6 class="card-subtitle mb-3 text-secondary">
-                {updatedAt}
-            </h6>
-            <div class="card-text d-flex align-items-center mb-2">
-                <div>
-                    {tags}
-                    {languages}
+    <div class="card-body">
+        <div class="card card-post w-100 border-0">
+            <div class="card-body p-0">
+                <h4 class="card-title mb-4">
+                    <a href="{link}">{name}</a>
+                </h4>
+                <h6 class="card-subtitle mb-3 text-secondary">
+                    {updatedAt}
+                </h6>
+                <div class="card-text d-flex align-items-center mb-2">
+                    <div>
+                        {tags}
+                        {languages}
+                    </div>
                 </div>
+                <div class="card-text mb-0">
+                    <p>{description}</p>
+                </div>
+                <a href="{link}">Read More...</a>
             </div>
-            <div class="card-text mb-0">
-                <p>{description}</p>
-            </div>
-            <a href="{link}">Read More...</a>
         </div>
     </div>
-</div>
-</div> `;
-var languagesTemplate = `<span class="d-inline-block border rounded p-1 mr-1 mb-1">{tag}</span>`
+</div>`;
+var tagTemplate = `<span class="d-inline-block border rounded p-1 mr-1 mb-1">{tag}</span>`
 
 //Request - List Posts
 fetch(new Request("https://api.github.com/users/GFrainer/repos"))
@@ -75,7 +75,7 @@ function getInternalTags(tagsURL, p) {
         throw new Error("404");
     }).then(r => {
         r.Tags.forEach(tag=>{
-            p.tags += languagesTemplate.replace("{tag}", tag);
+            p.tags += tagTemplate.replace("{tag}", tag);
         });
     }).catch(e=>console.log("No Tags"));
 }
@@ -88,7 +88,7 @@ function getLanguages(languagesURL, p) {
         throw new Error("404");
     }).then(r => {
         for (let l in r) {
-            p.languages += languagesTemplate.replace("{tag}", l);
+            p.languages += tagTemplate.replace("{tag}", l);
         }
     }).catch(e=>console.log("No Languages"));
 }
