@@ -23,17 +23,18 @@ var postTemplate = `<div class="card mb-2">
         </div>
     </div>
 </div>`;
-var tagTemplate = `<span class="d-inline-block border rounded p-1 mr-1 mb-1">{tag}</span>`
+var tagTemplate = `<span class="d-inline-block border rounded p-1 mr-1 mb-1">{tag}</span>`;
+var limitPosts = 3;
 
 //Request - List Posts
-fetch(new Request("https://api.github.com/users/GFrainer/repos"))
+fetch(new Request("https://api.github.com/users/GFrainer/repos?per_page="+limitPosts+"&type=public&sort=created"))
     .then(response => {
         if (response.status === 200) {
             return response.json();
         }
     })
     .then(response => {
-        let posts = new Array((response.length > 3 ? 3 : response.length));
+        let posts = new Array((response.length > limitPosts ? limitPosts : response.length));
         let promises = new Array(posts.length*2);
 
         for (let i = 0; i < posts.length; i++) {
@@ -87,8 +88,12 @@ function getLanguages(languagesURL, p) {
         }
         throw new Error("404");
     }).then(r => {
+        let cent = 0;
         for (let l in r) {
-            p.languages += tagTemplate.replace("{tag}", l);
+            cent += r[l];
+        }
+        for (let l in r) {
+            p.languages += tagTemplate.replace("{tag}", l+" ["+((r[l]*100/cent).toPrecision(4))+"%]");
         }
     }).catch(e=>console.log("No Languages"));
 }
