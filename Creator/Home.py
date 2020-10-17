@@ -13,6 +13,8 @@ class Home:
                 ret['script'] = "Home.js"
                 templates = Templates.getTemplates("Home")
                 script = s.read()
+                with open("../Data/Tags.json", "r") as tags:
+                    script = script.replace("${TagsData}", tags.read())
                 for template in templates:
                     script = script.replace("${"+template+"}", templates[template])
                 script = (Template(script)).safe_substitute(dataDict)

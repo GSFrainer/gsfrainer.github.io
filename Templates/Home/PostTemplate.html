@@ -2,16 +2,18 @@
     <div class="card-body">
         <div class="card card-post w-100 border-0">
             <div class="card-body p-0">
-                <h4 class="card-title mb-4">
+                <h4 class="card-title mb-2">
                     <a href="{link}">{name}</a>
                 </h4>
-                <h6 class="card-subtitle mb-3 text-secondary">
-                    {updatedAt}
+                <h6 class="card-subtitle mb-1 text-secondary post-date">
+                    Created: {createdAt}
+                </h6>
+                <h6 class="card-subtitle mb-1 text-secondary post-date">
+                    Last Update: {updatedAt}
                 </h6>
                 <div class="card-text d-flex align-items-center mb-2">
                     <div>
-                        {tags}
-                        {languages}
+                        {tags}{languages}
                     </div>
                 </div>
                 <div class="card-text mb-0">

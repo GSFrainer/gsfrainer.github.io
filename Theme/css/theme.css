@@ -78,7 +78,7 @@ h2[id]::before {
     height           : 50px;
     -webkit-animation: spin 2s linear infinite;
     animation        : spin 2s linear infinite;
-    margin: 100px auto;
+    margin           : 100px auto;
 }
 
 @-webkit-keyframes spin {
@@ -99,4 +99,27 @@ h2[id]::before {
     100% {
         transform: rotate(360deg);
     }
+}
+
+.post-date {
+    font-size: 80%;
+}
+
+.post-tag {
+    background-color: #5a5a5a;
+    padding         : 0 0 1px 5px;
+    font-size       : 80%;
+    color           : #fff;
+}
+
+.post-tag .tag {
+    background-color: #ea7637;
+    padding         : 0px 5px 1px 5px;
+    margin          : 0 0 -1px 0;
+}
+
+.post-tag .language-usage {
+    background-color: #1182c2;
+    padding         : 0px 5px 1px 5px;
+    margin          : 0 0 -1px 0;
 }
