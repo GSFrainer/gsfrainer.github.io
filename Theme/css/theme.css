@@ -101,6 +101,11 @@ h2[id]::before {
     }
 }
 
+.description {
+    text-indent: 1.5em;
+    font-size: 95% !important;
+}
+
 .post-date {
     font-size: 80%;
 }

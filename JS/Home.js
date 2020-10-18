@@ -18,7 +18,7 @@ var postTemplate = `<div class="card mb-2">
                     </div>
                 </div>
                 <div class="card-text mb-0">
-                    <p>{description}</p>
+                    <p class="description">{description}</p>
                 </div>
                 <a href="{link}">Read More...</a>
             </div>
@@ -65,7 +65,7 @@ fetch(new Request("https://api.github.com/users/GFrainer/repos?per_page="+limitP
             promises[i] = getLanguages(response[i].languages_url, posts[i]);
             promises[promises.length+i] = getInternalTags("https://raw.githubusercontent.com/"+response[i].full_name+"/"+response[i].default_branch + "/InternalTags.json", posts[i]);
         }
-
+        
         Promise.all(promises).then(results => {
             let post;
             document.getElementById("homePosts").innerHTML = "";
@@ -94,7 +94,6 @@ fetch(new Request("https://api.github.com/users/GFrainer/repos?per_page="+limitP
         }).then(r => {
             r.Tags.forEach(tag=>{
                 if(tagsData[tag] != null){
-                    console.log(tag);
                     p.tags += (tagTemplate.replace("{tag}", tag)).replace("{style}", 'style="background-color: '+tagsData[tag]["color"]+' !important;" ');
                 }else{
                     p.tags += tagTemplate.replace("{tag}", tag);
