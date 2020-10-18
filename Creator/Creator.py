@@ -8,6 +8,7 @@ from About import About
 
 index = Index()
 home = Home()
+posts = Posts()
 activities = Activities()
 about = About()
 
@@ -16,15 +17,18 @@ with open('../Data/Profile.json', 'r') as profile:
     data.update(json.loads(profile.read()))
 
 homeTh = Thread(target=home.createHome, args=(data,))
+postsTh = Thread(target=posts.createPosts, args=(data,))
 activitiesTh = Thread(target=activities.createActivities, args=(data,))
 aboutTh = Thread(target=about.createAbout, args=(data,))
 
 homeTh.start()
+postsTh.start()
 activitiesTh.start()
 aboutTh.start()
 
 pages = dict()
 pages["Home"] = homeTh.join()
+pages["Posts"] = postsTh.join()
 pages["Activities"] = activitiesTh.join()
 pages["About"] = aboutTh.join()
 
