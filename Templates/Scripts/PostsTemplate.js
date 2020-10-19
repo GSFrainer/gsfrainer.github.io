@@ -2,8 +2,12 @@
 var postTemplate = `${PostTemplate}`;
 var tagTemplate = `${TagTemplate}`;
 var languageTemplate = `${LanguageTemplate}`;
+var filterTemplate = `${FilterTemplate}`;
 var tagsData = ${TagsData};
+var filters = { tags: {}, languages: {} };
 var postsList;
+
+var activeFilters = { tags: [], languages: [] };
 
 listPosts();
 
@@ -13,6 +17,9 @@ function listPosts() {
         .then(response => {
             if (response.status === 200) {
                 return response.json();
+            }
+            if (response.status === 403) {
+                throw new Error(403);
             }
         })
         .then(response => {
@@ -27,54 +34,128 @@ function listPosts() {
                     description: response[i].description,
                     tags: "",
                     languages: "",
+                    filter: { tags: [], languages: [] },
                     link: response[i].html_url
                 };
-                promises[i] = getLanguages(response[i].languages_url, posts[i]);
-                promises[promises.length + i] = getInternalTags("https://raw.githubusercontent.com/" + response[i].full_name + "/" + response[i].default_branch + "/InternalTags.json", posts[i]);
+                promises[i] = getLanguages(response[i].languages_url, posts[i], posts[i].filter.languages);
+                promises[promises.length + i] = getInternalTags("https://raw.githubusercontent.com/" + response[i].full_name + "/" + response[i].default_branch + "/InternalTags.json", posts[i], posts[i].filter.tags);
             }
 
             Promise.all(promises).then(results => {
                 let post;
                 postsList = posts;
-                document.getElementById("postsList").innerHTML = "";
-                posts.forEach(p => {
-                    post = postTemplate;
-                    post = post.replace("{name}", p.name);
-                    post = post.replace("{createdAt}", (new Date(p.created_at)).toLocaleDateString("en-GB", { year: 'numeric', month: 'long', day: 'numeric' }));
-                    post = post.replace("{updatedAt}", (new Date(p.updated_at)).toLocaleDateString("en-GB", { year: 'numeric', month: 'long', day: 'numeric' }));
-                    post = post.replace("{description}", p.description);
-                    post = post.replace("{tags}", p.tags);
-                    post = post.replace("{languages}", p.languages);
-                    post = post.replaceAll("{link}", p.link);
-                    document.getElementById("postsList").innerHTML += post;
-                });
+                loadPosts(posts);
+            }).catch(error => {
+                if (error.message == '403') {
+                    connectionFail();
+                }
             });
         }).catch(error => {
-            console.error(error);
+            if (error.message == '403') {
+                connectionFail();
+            }
         });
 }
 
-function getInternalTags(tagsURL, p) {
+function selectTagFilter(tag) {
+    if (!activeFilters.tags.includes(tag)) {
+        activeFilters.tags.push(tag);
+        filterPosts();
+    }
+}
+
+function unselectTagFilter(tag) {
+    if (activeFilters.tags.includes(tag)) {
+        activeFilters.tags.splice(activeFilters.tags.indexOf(tag), 1);
+        filterPosts();
+    }
+}
+
+function selectLanguageFilter(language) {
+    if (!activeFilters.languages.includes(language)) {
+        activeFilters.languages.push(language);
+        filterPosts();
+    }
+}
+function unselectLanguageFilter(language) {
+    if (activeFilters.languages.includes(language)) {
+        activeFilters.languages.splice(activeFilters.languages.indexOf(language), 1);
+        filterPosts();
+    }
+}
+
+function filterPosts() {
+    let postsFilter = "";
+    activeFilters.tags.forEach(tag => {
+        postsFilter += filterTemplate.replaceAll("{filter}", tag).replace("{unselectFilter}", "unselectTagFilter('" + tag + "')");
+    });
+    activeFilters.languages.forEach(language => {
+        postsFilter += filterTemplate.replaceAll("{filter}", language).replace("{unselectFilter}", "unselectLanguageFilter('" + language + "')");
+    });
+    document.getElementById("postsFilter").innerHTML = postsFilter;
+    if (activeFilters.tags.length == 0 && activeFilters.languages.length == 0) {
+        loadPosts(postsList);
+        return;
+    }
+    loadPosts(postsList.filter(p => {
+        if (p.filter.tags.some(t => {
+            return activeFilters.tags.includes(t);
+        })) {
+            return true;
+        }
+        return p.filter.languages.some(l => {
+            return activeFilters.languages.includes(l);
+        });
+    }));
+}
+
+function loadPosts(posts) {
+    document.getElementById("postsList").innerHTML = "";
+    posts.forEach(p => {
+        post = postTemplate;
+        post = post.replace("{name}", p.name);
+        post = post.replace("{createdAt}", (new Date(p.created_at)).toLocaleDateString("en-GB", { year: 'numeric', month: 'long', day: 'numeric' }));
+        post = post.replace("{updatedAt}", (new Date(p.updated_at)).toLocaleDateString("en-GB", { year: 'numeric', month: 'long', day: 'numeric' }));
+        post = post.replace("{description}", p.description);
+        post = post.replace("{tags}", p.tags);
+        post = post.replace("{languages}", p.languages);
+        post = post.replaceAll("{link}", p.link);
+        document.getElementById("postsList").innerHTML += post;
+    });
+}
+
+function getInternalTags(tagsURL, p, f) {
     fetch(new Request(tagsURL)).then(result => {
         if (result.status === 200) {
             return result.json();
+        }
+        if (response.status === 403) {
+            throw new Error(403);
         }
         throw new Error("404");
     }).then(r => {
         r.Tags.forEach(tag => {
             if (tagsData[tag] != null) {
-                p.tags += (tagTemplate.replace("{tag}", tag)).replace("{style}", 'style="background-color: ' + tagsData[tag]["color"] + ' !important;" ');
+                p.tags += (tagTemplate.replace("{tag}", tag)).replace("{style}", 'style="background-color: ' + tagsData[tag]["color"] + ' !important;" ').replace("{selectFilter}", "selectTagFilter('" + tag + "')");
             } else {
-                p.tags += tagTemplate.replace("{tag}", tag);
+                p.tags += tagTemplate.replace("{tag}", tag).replace("{selectFilter}", "selectTagFilter('" + tag + "')");;
             }
+            f.push(tag);
         });
-    }).catch(e => console.log("No Tag"));
+    }).catch(error => {
+        if (error.message == '403') {
+            connectionFail();
+        }
+    });
 }
 
-function getLanguages(languagesURL, p) {
+function getLanguages(languagesURL, p, f) {
     return fetch(new Request(languagesURL)).then(result => {
         if (result.status === 200) {
             return result.json();
+        }
+        if (response.status === 403) {
+            throw new Error(403);
         }
         throw new Error("404");
     }).then(r => {
@@ -83,8 +164,21 @@ function getLanguages(languagesURL, p) {
             cent += r[l];
         }
         for (let l in r) {
-            p.languages += (languageTemplate.replace("{languageTag}", l)).replace("{languageUsage}", ((r[l] * 100 / cent).toPrecision(4)) + "%");
-
+            f.push(l);
+            p.languages += (languageTemplate.replace("{languageTag}", l)).replace("{languageUsage}", ((r[l] * 100 / cent).toPrecision(4)) + "%").replace("{selectFilter}", "selectLanguageFilter('" + l + "')");
         }
-    }).catch(e => console.log("No Languages"));
+    }).catch(error => {
+        if (error.message == '403') {
+            connectionFail();
+        }
+    });
+}
+
+function connectionFail() {
+    document.getElementById("postsList").innerHTML = `
+                <h2 class="border border-top-0 border-right-0 border-left-0 mb-2 pb-2">
+                    Sorry...
+                </h2>
+                <p class="description">Can't retrieve the information from GitHub server. To see the posts, please access my GitHub repository.</p>
+                <p><a href="">View GitHub Repository</a></p>  `;
 }

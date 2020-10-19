@@ -128,3 +128,17 @@ h2[id]::before {
     padding         : 0px 5px 1px 5px;
     margin          : 0 0 -1px 0;
 }
+
+.post-filter {
+    line-height: 1.4 !important;
+    background-color: #5a5a5a;
+    padding         : 0 0 1px 3px;
+    font-size       : 70%;
+    color           : #fff;
+}
+
+.post-filter .filter {
+    background-color: #8a8a8a;
+    padding         : 0px 5px 1px 5px;
+    margin          : 0 0 -1px 0;
+}
