@@ -14,6 +14,9 @@ function listPostsHome() {
             if (response.status === 200) {
                 return response.json();
             }
+            if (response.status === 403) {
+                throw new Error(403);
+            }
         })
         .then(response => {
             let posts = new Array((response.length > limitPosts ? limitPosts : response.length));
@@ -47,9 +50,15 @@ function listPostsHome() {
                     post = post.replaceAll("{link}", p.link);
                     document.getElementById("homePosts").innerHTML += post;
                 });
+            }).catch(error => {
+                if (error.message == '403') {
+                    connectionFail();
+                }
             });
         }).catch(error => {
-            console.error(error);
+            if (error.message == '403') {
+                connectionFail();
+            }
         });
 }
 
@@ -57,6 +66,9 @@ function getInternalTags(tagsURL, p) {
     fetch(new Request(tagsURL)).then(result => {
         if (result.status === 200) {
             return result.json();
+        }
+        if (response.status === 403) {
+            throw new Error(403);
         }
         throw new Error("404");
     }).then(r => {
@@ -67,13 +79,20 @@ function getInternalTags(tagsURL, p) {
                 p.tags += tagTemplate.replace("{tag}", tag);
             }
         });
-    }).catch(e => console.log("No Tag"));
+    }).catch(error => {
+        if (error.message == '403') {
+            connectionFail();
+        }
+    });
 }
 
 function getLanguages(languagesURL, p) {
     return fetch(new Request(languagesURL)).then(result => {
         if (result.status === 200) {
             return result.json();
+        }
+        if (response.status === 403) {
+            throw new Error(403);
         }
         throw new Error("404");
     }).then(r => {
@@ -85,5 +104,18 @@ function getLanguages(languagesURL, p) {
             p.languages += (languageTemplate.replace("{languageTag}", l)).replace("{languageUsage}", ((r[l] * 100 / cent).toPrecision(4)) + "%");
 
         }
-    }).catch(e => console.log("No Languages"));
+    }).catch(error => {
+        if (error.message == '403') {
+            connectionFail();
+        }
+    });
+}
+
+function connectionFail() {
+    document.getElementById("homePosts").innerHTML = `
+                <h2 class="border border-top-0 border-right-0 border-left-0 mb-2 pb-2">
+                    Sorry...
+                </h2>
+                <p class="description">Can't retrieve the information from GitHub server. To see the posts, please access my GitHub repository.</p>
+                <p><a href="">View GitHub Repository</a></p>  `;
 }
