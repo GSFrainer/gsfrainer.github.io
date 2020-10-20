@@ -57,7 +57,7 @@ class Posts {
 
     //Request - List Posts
     listPosts() {
-        return fetch(new Request("https://api.github.com/users/GFrainer/repos?type=public&sort=created"))
+        return fetch(new Request("https://api.github.com/users/GSFrainer/repos?type=public&sort=created"))
             .then(response => {
                 if (response.status === 200) {
                     return response.json();
