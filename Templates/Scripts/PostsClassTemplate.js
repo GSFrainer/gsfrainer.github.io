@@ -1,51 +1,11 @@
 class Posts {
     constructor() {
         //Templates
-        this.postTemplate = `<div class="card mb-2">
-    <div class="card-body">
-        <div class="card card-post w-100 border-0">
-            <div class="card-body p-0">
-                <h4 class="card-title mb-2">
-                    <a href="{link}" target="_blank">{name}</a>
-                </h4>
-                <h6 class="card-subtitle mb-1 text-secondary post-date">
-                    Created: {createdAt}
-                </h6>
-                <h6 class="card-subtitle mb-1 text-secondary post-date">
-                    Last Update: {updatedAt}
-                </h6>
-                <div class="card-text d-flex align-items-center mb-2">
-                    <div>
-                        {tags}{languages}
-                    </div>
-                </div>
-                <div class="card-text mb-0">
-                    <p class="description">{description}</p>
-                </div>
-                <a href="{link}" target="_blank">Read More...</a>
-            </div>
-        </div>
-    </div>
-</div>`;
-        this.tagTemplate = `<span class="d-inline-block rounded mr-1 mb-1 post-tag post-tag-filter" onclick="{selectFilter}">#
-    <spam class="d-inline-block rounded-right tag" {style}>
-        {tag}
-    </spam>
-</span>`;
-        this.languageTemplate = `<span class="d-inline-block rounded mr-1 mb-1 post-tag post-tag-filter" onclick="{selectFilter}">
-    {languageTag}
-    <spam class="d-inline-block rounded-right language-usage">{languageUsage}</spam>
-</span>`;
-        this.filterTemplate = `<span id="{filter}" class="d-inline-block rounded mr-1 mb-1 post-filter" onclick="{unselectFilter}">X
-    <spam class="d-inline-block rounded-right filter">
-        {filter}
-    </spam>
-</span>`;
-        this.tagsData = {
-    "For Fun": {
-        "color": "#a4a62b"
-    }
-};
+        this.postTemplate = `${PostTemplate}`;
+        this.tagTemplate = `${TagTemplate}`;
+        this.languageTemplate = `${LanguageTemplate}`;
+        this.filterTemplate = `${FilterTemplate}`;
+        this.tagsData = ${TagsData};
 
         this.limitPosts = 3;
         this.activeFilters = {tags: [], languages: []};
@@ -57,7 +17,7 @@ class Posts {
 
     //Request - List Posts
     listPosts() {
-        return fetch(new Request("https://api.github.com/users/GFrainer/repos?type=public&sort=created"))
+        return fetch(new Request("https://api.github.com/users/${github}/repos?type=public&sort=created"))
             .then(response => {
                 if (response.status === 200) {
                     return response.json();

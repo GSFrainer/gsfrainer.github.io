@@ -129,7 +129,7 @@ h2[id]::before {
     margin          : 0 0 -1px 0;
 }
 
-.post-tag .filter {
+.post-tag-filter {
     cursor: pointer;
 }
 
