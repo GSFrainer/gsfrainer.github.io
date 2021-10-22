@@ -1,0 +1,149 @@
+.profile-image {
+    border: 5px solid rgba(0, 0, 0, 0.2);
+}
+
+.site-container {
+    padding-top: 80px;
+}
+
+.icon {
+    height : 21px;
+    width  : 21px;
+    display: flex;
+
+    svg {
+        width : 21px;
+        height: 21px;
+    }
+}
+
+.icon.grey svg path {
+    fill: #999;
+}
+
+.icon.red svg path {
+    fill: #A00;
+}
+
+.list-title {
+    text-transform: uppercase;
+    font-weight   : 300;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+}
+
+.navbar-toggler {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggler.collapsed {
+    background-color: transparent;
+}
+
+h2[id]::before {
+    display   : block;
+    height    : 80px;
+    margin-top: -80px;
+    visibility: hidden;
+    content   : "";
+}
+
+.sticky-top.space-before {
+    padding-top: 80px;
+    margin-top : -80px;
+}
+
+@media print {
+    body {
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    .jumbotron {
+        padding: 0;
+    }
+
+    .badge {
+        border: 0 !important;
+    }
+}
+
+.loader {
+    border           : 5px solid #f3f3f3;
+    border-radius    : 0%;
+    border-top       : 5px solid blue;
+    border-bottom    : 5px solid green;
+    width            : 25px;
+    height           : 25px;
+    -webkit-animation: spin 2s linear infinite;
+    animation        : spin 2s linear infinite;
+    margin           : 100px auto;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.description {
+    text-indent: 1.5em;
+    font-size: 95% !important;
+}
+
+.post-date {
+    font-size: 80%;
+}
+
+.post-tag {
+    background-color: #5a5a5a;
+    padding         : 0 0 1px 5px;
+    font-size       : 80%;
+    color           : #fff;
+}
+
+.post-tag .tag {
+    background-color: #ea7637;
+    padding         : 0px 5px 1px 5px;
+    margin          : 0 0 -1px 0;
+}
+
+.post-tag .language-usage {
+    background-color: #1182c2;
+    padding         : 0px 5px 1px 5px;
+    margin          : 0 0 -1px 0;
+}
+
+.post-tag-filter {
+    cursor: pointer;
+}
+
+.post-filter {
+    line-height: 1.4 !important;
+    background-color: #5a5a5a;
+    padding         : 0 0 1px 3px;
+    font-size       : 70%;
+    color           : #fff;
+    cursor: pointer;
+}
+
+.post-filter .filter {
+    background-color: #8a8a8a;
+    padding         : 0px 5px 1px 5px;
+    margin          : 0 0 -1px 0;
+}
