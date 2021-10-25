@@ -112,7 +112,7 @@ h2[id]::before {
 
 .post-tag {
     background-color: #5a5a5a;
-    font-size       : 80%;
+    font-size       : 70%;
     color           : #fff;
     padding         : 0px 0px 0px 3px;
 }
@@ -120,10 +120,11 @@ h2[id]::before {
 .post-tag .tag {
     background-color: #ea7637;
     padding         : 0px 3px 1px 2px;
+    opacity: 0.9;
 }
 
 .post-tag .language-usage {
-    background-color: #1182c2;
+    background-color: #1182c280;
     padding         : 0px 3px 1px 2px;
 }
 
@@ -150,9 +151,14 @@ h2[id]::before {
     font-size: 80%;
 }
 
+.card-title {
+    font-family: roboto !important;
+}
+
 .card-subtitle {
     font-size: .70rem;
     padding-left: .5em;
+    font-family: roboto !important;
 }
 
 .card-body {

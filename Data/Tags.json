@@ -1,5 +1,14 @@
 {
     "For Fun": {
         "color": "#a4a62b"
+    },
+    "Learn": {
+        "color": "#ea7637"
+    },
+    "Cryptocurrency": {
+        "color": "#f7931a"
+    },
+    "Trade": {
+        "color": "#0ecb81"
     }
 }

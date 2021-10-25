@@ -6,8 +6,9 @@ class Posts {
         this.languageTemplate = `${LanguageTemplate}`;
         this.filterTemplate = `${FilterTemplate}`;
         this.tagsData = ${TagsData};
+        this.kaggleData = ${KaggleData};
 
-        this.limitPosts = 3;
+        this.limitPosts = 2;
         this.activeFilters = {tags: [], languages: []};
 
         Posts.postsList = [];
@@ -41,7 +42,7 @@ class Posts {
                     postsHome[i] = {
                         name: response[i].name,
                         updated_at: response[i].updated_at,
-                        created_at: response[i].created_at,
+                        created_at: (new Date(response[i].created_at)),
                         description: response[i].description,
                         tagsContent: "",
                         languagesContent: "",
@@ -52,11 +53,31 @@ class Posts {
                     promises[promises.length + i] = this.getInternalTags("https://raw.githubusercontent.com/" + response[i].full_name + "/" + response[i].default_branch + "/InternalTags.json", postsHome[i]);
                 }
 
+                this.kaggleData.Posts.forEach(post => {
+                    post.tagsContent = "";
+                    post.languagesContent = "";
+                    post.filter = {tags: [], languages: []};
+                    post.created_at = (new Date(post.created_at));
+
+                    post.tags.forEach(tag=>{
+                        post.tagsContent += this.loadTag(tag);
+                        post.filter.tags.push(tag);
+                    });
+                    
+                    post.languages.forEach(language=>{
+                        post.languagesContent += this.loadLanguage(language, 100.0);
+                        post.filter.languages.push(language);
+                    });
+                });
+
                 //Wait home posts promises
                 Promise.all(promises).then(results => {
 
-                    //Load home posts on HTML
-                    this.loadPostsField("homePosts", postsHome);
+                    //Load Dev home posts on HTML
+                    this.loadPostsField("devHomePosts", postsHome);
+
+                    //Load Data Science home posts on HTML
+                    this.loadPostsField("dataScienceHomePosts", this.kaggleData.Posts.slice(0, this.limitPosts));
 
                     //Clean posts list
                     Posts.postsList = new Array();
@@ -83,7 +104,7 @@ class Posts {
                         otherPosts[j] = {
                             name: response[i].name,
                             updated_at: response[i].updated_at,
-                            created_at: response[i].created_at,
+                            created_at: (new Date(response[i].created_at)),
                             description: response[i].description,
                             tagsContent: "",
                             languagesContent: "",
@@ -96,10 +117,12 @@ class Posts {
                     }
 
                     //Wait home posts promises
-                    Promise.all(promises).then(results => {
-
+                    Promise.all(promises).then(results => {                        
                         //Copy other posts to (full) posts list
+                        Posts.postsList = Posts.postsList.concat(this.kaggleData.Posts);
                         Posts.postsList = Posts.postsList.concat(otherPosts);
+                        Posts.postsList.sort((a,b)=>{return b.created_at-a.created_at});
+
                         Posts._loadingLock = false;
                         Posts._waitingLoad.forEach(f => f());
 
@@ -123,16 +146,24 @@ class Posts {
         document.getElementById(field).innerHTML = "";
         let post;
         posts.forEach(p => {
+            console.log(p);
             post = this.postTemplate;
             post = post.replace("{name}", p.name);
-            post = post.replace("{createdAt}", (new Date(p.created_at)).toLocaleDateString("en-GB", {year: 'numeric', month: 'long', day: 'numeric'}));
-            post = post.replace("{updatedAt}", (new Date(p.updated_at)).toLocaleDateString("en-GB", {year: 'numeric', month: 'long', day: 'numeric'}));
+            post = post.replace("{createdAt}", p.created_at.toLocaleDateString("en-GB", {year: 'numeric', month: 'long', day: 'numeric'}));
+            //post = post.replace("{updatedAt}", (new Date(p.updated_at)).toLocaleDateString("en-GB", {year: 'numeric', month: 'long', day: 'numeric'}));
             post = post.replace("{description}", p.description);
             post = post.replace("{tags}", p.tagsContent);
             post = post.replace("{languages}", p.languagesContent);
             post = post.replaceAll("{link}", p.link);
             document.getElementById(field).innerHTML += post;
         });
+    }
+
+    loadTag(tag) {
+        if (this.tagsData[tag] != null) {
+            return (this.tagTemplate.replace("{tag}", tag)).replace("{style}", 'style="background-color: ' + this.tagsData[tag]["color"] + ' !important;" ').replace("{selectFilter}", "posts.selectTagFilter('" + tag + "')");
+        }
+        return this.tagTemplate.replace("{tag}", tag).replace("{selectFilter}", "posts.selectTagFilter('" + tag + "')");
     }
 
     getInternalTags(tagsURL, p) {
@@ -146,16 +177,16 @@ class Posts {
             throw new Error("404");
         }).then(r => {
             r.Tags.forEach(tag => {
-                if (this.tagsData[tag] != null) {
-                    p.tagsContent += (this.tagTemplate.replace("{tag}", tag)).replace("{style}", 'style="background-color: ' + this.tagsData[tag]["color"] + ' !important;" ').replace("{selectFilter}", "posts.selectTagFilter('" + tag + "')");
-                } else {
-                    p.tagsContent += this.tagTemplate.replace("{tag}", tag).replace("{selectFilter}", "posts.selectTagFilter('" + tag + "')");;
-                }
+                p.tagsContent += this.loadTag(tag)
                 p.filter.tags.push(tag);
             });
         }).catch(error => {
             this.errorHandler(error);
         });
+    }
+
+    loadLanguage(language, usage) {
+        return (this.languageTemplate.replace("{languageTag}", language)).replace("{languageUsage}", usage + "%").replace("{selectFilter}", "posts.selectLanguageFilter('" + language + "')");
     }
 
     getLanguages(languagesURL, p) {
@@ -173,7 +204,7 @@ class Posts {
                 cent += r[l];
             }
             for (let l in r) {
-                p.languagesContent += (this.languageTemplate.replace("{languageTag}", l)).replace("{languageUsage}", ((r[l] * 100 / cent).toPrecision(4)) + "%").replace("{selectFilter}", "posts.selectLanguageFilter('" + l + "')");
+                p.languagesContent += this.loadLanguage(l, ((r[l] * 100 / cent).toPrecision(4)));
                 p.filter.languages.push(l);
             }
         }).catch(error => {

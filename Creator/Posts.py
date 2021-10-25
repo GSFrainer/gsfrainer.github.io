@@ -19,6 +19,10 @@ class Posts:
                 with open("../Data/Tags.json", "r") as tags:
                     script = script.replace("${TagsData}", tags.read())
 
+                #Add Kaggle posts
+                with open("../Data/Kaggle.json", "r") as kaggle:
+                    script = script.replace("${KaggleData}", kaggle.read())
+
                 #Add Home objects templates on script
                 templates = Templates.getTemplates("Posts")
                 for template in templates:
